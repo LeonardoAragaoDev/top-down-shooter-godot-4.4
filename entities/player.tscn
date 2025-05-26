@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://civb052lxv1ku"]
+
+[ext_resource type="Script" uid="uid://dav3lrc1gvvha" path="res://scripts/player.gd" id="1_b0kkn"]
+[ext_resource type="Texture2D" uid="uid://c65pwnmse2yhx" path="res://assets/square.png" id="1_merdl"]
+[ext_resource type="PackedScene" uid="uid://bphwlibupj332" path="res://prefabs/bullet.tscn" id="2_e4p34"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0kkn"]
+size = Vector2(62, 62)
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_b0kkn")
+bullet_scene = ExtResource("2_e4p34")
+
+[node name="square" type="Sprite2D" parent="."]
+modulate = Color(0.0941176, 0.0941176, 1, 1)
+texture = ExtResource("1_merdl")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_b0kkn")

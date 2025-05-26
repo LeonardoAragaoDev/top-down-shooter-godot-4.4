@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://8oc48htb5jk3"]
+
+[ext_resource type="PackedScene" uid="uid://civb052lxv1ku" path="res://entities/player.tscn" id="1_e05a3"]
+[ext_resource type="Script" uid="uid://dorek75b44n1t" path="res://scripts/arena.gd" id="1_wl4x5"]
+[ext_resource type="PackedScene" uid="uid://dreqqufi8nh8j" path="res://entities/enemy.tscn" id="2_wl4x5"]
+
+[sub_resource type="Environment" id="Environment_wl4x5"]
+background_mode = 3
+glow_enabled = true
+glow_levels/1 = 5.0
+glow_levels/2 = 3.5
+glow_normalized = true
+glow_strength = 1.5
+glow_mix = 0.25
+glow_bloom = 0.5
+glow_blend_mode = 4
+glow_hdr_threshold = 2.0
+
+[node name="arena" type="Node2D"]
+script = ExtResource("1_wl4x5")
+enemy_scene = ExtResource("2_wl4x5")
+
+[node name="player" parent="." instance=ExtResource("1_e05a3")]
+position = Vector2(880, 440)
+shoot_coldown = 0.1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wl4x5")
+
+[node name="spawn_timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
