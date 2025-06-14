@@ -8,6 +8,7 @@ size = Vector2(62, 62)
 
 [node name="enemy" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_pqhw6")
+health = 1
 
 [node name="square" type="Sprite2D" parent="."]
 modulate = Color(1, 0.156863, 0.376471, 1)
